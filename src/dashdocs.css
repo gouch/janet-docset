@@ -1,0 +1,28 @@
+#toc-toggle,
+.toc,
+footer,
+h4.subtitle {
+  display: none !important;
+}
+
+:where([data-package])::before {
+  opacity: 0.62;
+  content: attr(data-package);
+  font-family: sans-serif;
+  font-size: 0.8em;
+  font-weight: normal;
+  display: block;
+}
+
+.binding-type {
+  color: inherit;
+  opacity: 0.62;
+}
+
+h1 {
+  line-height: 1.25;
+
+  &::before {
+    font-size: 2rem;
+  }
+}
