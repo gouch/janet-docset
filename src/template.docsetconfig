@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>allowFilters</key>
+	<string>janet-lang.org/docs/*, janet-lang.org/api/*, janet-lang.org/capi/*, janet-lang.org/jpm/*, janet-lang.org/spork/*</string>
+	<key>basicIndexEnabled</key>
+	<false/>
+	<key>cssToInject</key>
+	<string><![CDATA[%cssToInject%]]></string>
+	<key>denyFilters</key>
+	<string>janet-lang.org/api/index.html, janet-lang.org/*/api/index.html</string>
+	<key>docsetKeyword</key>
+	<string>janet</string>
+	<key>docsetName</key>
+	<string>Janet</string>
+	<key>extraInfoPlist</key>
+	<string></string>
+	<key>isFromLocalFolder</key>
+	<false/>
+	<key>isFromWebsite</key>
+	<true/>
+	<key>javaScriptIndexEnabled</key>
+	<true/>
+	<key>javaScriptUsedToIndex</key>
+	<string><![CDATA[%javaScriptUsedToIndex%]]></string>
+	<key>localFolderPath</key>
+	<string></string>
+	<key>websiteURL</key>
+	<string>https://janet-lang.org/docs/index.html</string>
+</dict>
+</plist>
