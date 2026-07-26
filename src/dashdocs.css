@@ -14,7 +14,7 @@ h4.subtitle {
   display: block;
 }
 
-.binding-type {
+.binding-type:not(:has(a)) {
   color: inherit;
   opacity: 0.62;
 }

@@ -1,4 +1,4 @@
-/* globals $, dashDoc  */
+/* globals dashDoc  */
 
 const path = window.location.pathname
 const qs = (selector) => document.querySelector(selector)
@@ -20,18 +20,36 @@ function createEntries(selector, type) {
   })
 }
 
-function main() {
-  // Skip redundant full listing
-  if (path.endsWith('/api/index.html')) return
+function createSections(selector) {
+  qsa(selector).length > 1 && createEntries(selector, 'Section')
+}
 
-  // Packages
-  else if (
-    path.endsWith('/jpm/index.html') ||
-    path.endsWith('/spork/index.html')
-  ) {
-    createEntry(qs('h1'), 'Package')
-    createEntries('h2', 'Section')
+function createSymbols(selector) {
+  const key = {
+    'var (function)': 'Function',
+    cfunction: 'Function',
+    function: 'Function',
+    macro: 'Function',
+
+    'core/file': 'Constant',
+    'core/peg': 'Constant',
+    array: 'Constant',
+    keyword: 'Constant',
+    number: 'Constant',
+    string: 'Constant',
+    struct: 'Constant',
+    table: 'Constant',
+    tuple: 'Constant',
   }
+  qsa(selector).forEach((element) => {
+    const type = element?.nextElementSibling?.textContent || 'func'
+    createEntry(element, key[type])
+  })
+}
+
+function main() {
+  // Filter redundant full listings
+  if (path.endsWith('/api/index.html')) return
 
   // Packages API
   else if (path.includes('/jpm/api/') || path.includes('/spork/api/')) {
@@ -42,21 +60,28 @@ function main() {
     )
 
     createEntry(qs('h1'), 'Module')
-    createEntries('h2', 'Section')
-    createEntries('.binding-sym', 'Function')
+    createSections('h2')
+    createSymbols('.binding-sym')
   }
 
   // Core API
   else if (path.includes('/api/')) {
     createEntry(qs('h1'), 'Module')
-    createEntries('h2', 'Section')
-    createEntries('.binding-sym', 'Function')
+    createSymbols('.binding-sym')
   }
 
-  // Core general
+  // Package guides
+  else if (path.includes('/jpm/') || path.includes('/spork/')) {
+    const pgkName = path.includes('/jpm/') ? 'jpm' : 'spork'
+    qs('h1').setAttribute('data-package', pgkName)
+    createEntry(qs('h1'), 'Guide')
+    createSections('h2')
+  }
+
+  // Core guides
   else {
     createEntry(qs('h1'), 'Guide')
-    createEntries('h2', 'Section')
+    createSections('h2')
   }
 }
 
