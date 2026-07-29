@@ -1,4 +1,5 @@
-/* globals dashDoc  */
+/* Copyright © 2026 David Gouch | MIT License */
+/* globals dashDoc */
 
 const path = window.location.pathname
 const qs = (selector) => document.querySelector(selector)

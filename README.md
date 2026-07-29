@@ -1,1 +1,27 @@
-# Janet Docset for Dash
+# Janet docset
+
+Hi, I’m [David Gouch][dg] and this is a documentation docset for [Janet][]. The source code is available on [GitHub][].
+
+[dg]: https://davidgouch.com
+[janet]: https://janet-lang.org
+[github]: https://github.com/gouch/janet-docset
+
+![Dash screenshot](src/screenshot.png)
+
+## Build instructions
+
+Build dependencies are `janet`, `tar` and `wget`.
+
+A macOS shell environment is assumed. Linux might work too.
+
+To fetch documentation and generate a docset, run:
+
+```shell
+janet build.janet
+```
+
+This will create two assets:
+- `dist/` contains the format for [Dash-User-Contributions][contrib].
+- `tmp/Janet.docset` is a package that can be added to your local Dash. Move it somewhere stable (Dash will import it by reference) then double-click.
+
+[contrib]: https://github.com/Kapeli/Dash-User-Contributions

@@ -1,3 +1,4 @@
+# Copyright © 2026 David Gouch | MIT License
 (use spork)
 (use spork/sh-dsl)
 
@@ -32,7 +33,7 @@
   (spit "dist/docset.json"
         (string/replace "%version%" version (slurp "src/docset.json"))))
 
-(defn ready-for-distribution []
+(defn prep-for-distribution []
   ($ cp "src/icon.png" "README.md" "dist/")
   ($ cp "src/icon.png" "Janet.docset/")
 
@@ -56,5 +57,5 @@
       (update-mirror mirror-dir)
       (build-config-files mirror-dir version)
       ($ ./vendor/DocsetGenerator/DocsetGenerator tmp/Janet.docsetconfig)
-      (ready-for-distribution))
+      (prep-for-distribution))
     ([err] (print err))))
