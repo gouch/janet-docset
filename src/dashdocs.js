@@ -6,7 +6,7 @@ const qs = (selector) => document.querySelector(selector)
 const qsa = (selector) => Array.from(document.querySelectorAll(selector))
 
 function createEntry(element, type) {
-  const hash = element.textContent.trim().replace(/\W/, '-')
+  const hash = element.textContent.trim()
   element.setAttribute('id', hash)
   dashDoc.addEntry({
     name: element.textContent,
