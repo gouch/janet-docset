@@ -1,5 +1,7 @@
 # Copyright © 2026 David Gouch | MIT License
-(use spork)
+(import spork/date)
+(import spork/path)
+(import spork/sh)
 (use spork/sh-dsl)
 
 (defn deps-check [& deps]
@@ -7,13 +9,15 @@
     (error "Missing dependencies")))
 
 (defn update-mirror [mirror-dir]
-  (if-not (sh/exists? mirror-dir)
+  (if (sh/exists? mirror-dir)
+    (print "Using " mirror-dir)
     ($ wget
        --adjust-extension
        --convert-links
        --directory-prefix (string mirror-dir)
        --include-directories "api,assets,capi,css,docs,jpm,js,spork"
        --mirror
+       --no-host-directories
        --no-verbose
        --page-requisites
        --random-wait
@@ -37,19 +41,19 @@
   ($ cp "src/icon.png" "README.md" "dist/")
   ($ cp "src/icon.png" "Janet.docset/")
 
-  # Add back key unexpectedly dropped by DocsetGenerator
   (let [plist "Janet.docset/Contents/Info.plist"]
+    # Add back key unexpectedly dropped by DocsetGenerator
     (spit plist (string/replace
                   "</dict>"
-                  "<key>dashIndexFilePath</key><string>janet-lang.org/docs/index.html</string></dict>"
+                  "<key>DashDocSetFallbackURL</key><string>https://janet-lang.org/</string></dict>"
                   (slurp plist))))
   ($ mv Janet.docset tmp/)
   ($ tar --exclude ".DS_Store" --exclude "log.txt" -czf dist/Janet.tgz -C tmp Janet.docset))
 
 (defn main [&]
   (try
-    (let [mirror-dir (string "mirror/" (date/to-string (os/date) "yyyy-MM-dd"))
-          version "1.42.1"]
+    (let [mirror-dir (string "mirror/janet-lang.org-" (date/to-string (os/date) "yyyy-MM-dd"))
+          version "1.42.0"]
       (deps-check "tar" "wget")
       (do # cleanup
         ($ rm -r "dist" "tmp")
