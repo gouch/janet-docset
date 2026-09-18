@@ -53,7 +53,6 @@
   ($ mv Janet.docset tmp/)
   ($ tar --exclude ".DS_Store" --exclude "log.txt" -czf dist/Janet.tgz -C tmp Janet.docset))
 
-
 (defn main [&]
   (def stable-mirror "mirror/janet-lang.org-2026-09-17")
   (def version "1.42.0")
@@ -63,7 +62,8 @@
                        (string "mirror/janet-lang.org-"
                                (date/to-string (os/date) "yyyy-MM-dd")))]
       (deps-check "tar" "wget")
-      (do # cleanup
+      (do # clean up build directories
+        (os/cd (path/dirname (dyn *current-file*)))
         ($ rm -r "dist" "tmp")
         ($ mkdir "dist" "tmp"))
       (update-mirror mirror-dir)
