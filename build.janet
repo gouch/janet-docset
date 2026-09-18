@@ -38,8 +38,8 @@
         (string/replace "%version%" version (slurp "src/docset.json"))))
 
 (defn prep-for-distribution []
-  ($ cp "src/icon.png" "README.md" "dist/")
-  ($ cp "src/icon.png" "Janet.docset/")
+  ($ cp "src/icon.png" "src/icon@2x.png" "README.md" "dist/")
+  ($ cp "src/icon.png" "src/icon@2x.png" "Janet.docset/")
 
   (let [plist "Janet.docset/Contents/Info.plist"]
     # Add back keys unexpectedly dropped by DocsetGenerator

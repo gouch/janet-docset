@@ -46,6 +46,9 @@ function createSymbols(selector) {
 }
 
 function main() {
+  // Remove remote request iframe
+  qs('iframe.search-bar').remove()
+
   // Filter redundant full listings
   if (path.endsWith('/api/index.html')) return
 
