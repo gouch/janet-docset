@@ -10,7 +10,7 @@
 
 (defn update-mirror [mirror-dir]
   (if (sh/exists? mirror-dir)
-    (print "Using " mirror-dir)
+    (print "Building with " mirror-dir)
     ($ wget
        --adjust-extension
        --convert-links
@@ -50,10 +50,15 @@
   ($ mv Janet.docset tmp/)
   ($ tar --exclude ".DS_Store" --exclude "log.txt" -czf dist/Janet.tgz -C tmp Janet.docset))
 
+
 (defn main [&]
+  (def stable-mirror "mirror/janet-lang.org-2026-09-17")
+  (def version "1.42.0")
   (try
-    (let [mirror-dir (string "mirror/janet-lang.org-" (date/to-string (os/date) "yyyy-MM-dd"))
-          version "1.42.0"]
+    (let [mirror-dir (if (has-value? (dyn *args*) "--stable")
+                       stable-mirror
+                       (string "mirror/janet-lang.org-"
+                               (date/to-string (os/date) "yyyy-MM-dd")))]
       (deps-check "tar" "wget")
       (do # cleanup
         ($ rm -r "dist" "tmp")
