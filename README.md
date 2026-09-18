@@ -20,8 +20,14 @@ To fetch documentation and generate a docset, run:
 janet build.janet
 ```
 
+Or to generate a docset from the bundled mirror, run:
+
+```shell
+janet build.janet --stable
+```
+
 This will create two assets:
 - `dist/` contains the format for [Dash-User-Contributions][contrib].
-- `tmp/Janet.docset` is a package that can be added to your local Dash. Move it somewhere stable (Dash will import it by reference) then double-click.
+- `tmp/Janet.docset` is a package that can be added to your docset app. For Dash, move it somewhere stable (Dash will import it by reference) then double-click. For Zeal, move it to your docset storage directory.
 
 [contrib]: https://github.com/Kapeli/Dash-User-Contributions
