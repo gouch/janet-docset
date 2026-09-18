@@ -42,10 +42,13 @@
   ($ cp "src/icon.png" "Janet.docset/")
 
   (let [plist "Janet.docset/Contents/Info.plist"]
-    # Add back key unexpectedly dropped by DocsetGenerator
+    # Add back keys unexpectedly dropped by DocsetGenerator
     (spit plist (string/replace
                   "</dict>"
-                  "<key>DashDocSetFallbackURL</key><string>https://janet-lang.org/</string></dict>"
+                  (string
+                    "<key>DashDocSetFallbackURL</key><string>https://janet-lang.org/</string>\n"
+                    "<key>dashIndexFilePath</key><string>docs/index.html</string>"
+                    "</dict>")
                   (slurp plist))))
   ($ mv Janet.docset tmp/)
   ($ tar --exclude ".DS_Store" --exclude "log.txt" -czf dist/Janet.tgz -C tmp Janet.docset))

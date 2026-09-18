@@ -31,6 +31,6 @@
 	<key>DashDocSetFallbackURL</key>
 	<string>https://janet-lang.org/docs/index.html</string>
 	<key>dashIndexFilePath</key>
-	<string>janet-lang.org/docs/index.html</string>
+	<string>docs/index.html</string>
 </dict>
 </plist>
