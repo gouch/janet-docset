@@ -6,7 +6,7 @@ Hi, I’m [David Gouch][dg] and this is a documentation docset for [Janet][]. Th
 [janet]: https://janet-lang.org
 [github]: https://github.com/gouch/janet-docset
 
-![Dash screenshot](src/screenshot.png)
+![Dash screenshot](./screenshot.png)
 
 ## Build instructions
 
