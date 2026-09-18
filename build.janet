@@ -54,7 +54,7 @@
   ($ tar --exclude ".DS_Store" --exclude "log.txt" -czf dist/Janet.tgz -C tmp Janet.docset))
 
 (defn main [&]
-  (def stable-mirror "mirror/janet-lang.org-2026-09-17")
+  (def stable-mirror "mirror/janet-lang.org-2026-09-18")
   (def version "1.42.0")
   (try
     (let [mirror-dir (if (has-value? (dyn *args*) "--stable")
