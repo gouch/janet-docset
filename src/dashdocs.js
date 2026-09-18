@@ -5,11 +5,11 @@ const path = window.location.pathname
 const qs = (selector) => document.querySelector(selector)
 const qsa = (selector) => Array.from(document.querySelectorAll(selector))
 
-function createEntry(element, type) {
+function createEntry(element, type, name = null) {
   const hash = element.textContent.trim()
   element.setAttribute('id', hash)
   dashDoc.addEntry({
-    name: element.textContent,
+    name: name || element.textContent,
     type: type,
     hash: hash,
   })
@@ -66,6 +66,14 @@ function main() {
   else if (path.includes('/api/')) {
     createEntry(qs('h1'), 'Module')
     createSymbols('.binding-sym')
+  }
+
+  // Special forms
+  else if (path.includes('/specials.html')) {
+    createEntry(qs('h1'), 'Guide')
+    qsa('h2').forEach((h2) => {
+      createEntry(h2, 'Function', h2.textContent.match(/\((\w+)/)[1])
+    })
   }
 
   // Package guides
