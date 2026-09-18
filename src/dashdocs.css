@@ -26,3 +26,8 @@ h1 {
     font-size: 2rem;
   }
 }
+
+h3 .mendoza-code {
+  /* Fixes horizontal scroll on capi/configuration.html */
+  white-space: normal;
+}

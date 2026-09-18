@@ -14,18 +14,15 @@ function createEntry(element, type) {
   })
 }
 
-function createEntries(selector, type) {
-  qsa(selector).forEach((element) => {
-    createEntry(element, type)
-  })
-}
-
 function createSections(selector) {
-  qsa(selector).length > 1 && createEntries(selector, 'Section')
+  qsa(selector).length > 1 &&
+    qsa(selector).forEach((element) => {
+      createEntry(element, 'Section')
+    })
 }
 
 function createSymbols(selector) {
-  const key = {
+  const typeMap = {
     'var (function)': 'Function',
     cfunction: 'Function',
     function: 'Function',
@@ -42,8 +39,8 @@ function createSymbols(selector) {
     tuple: 'Constant',
   }
   qsa(selector).forEach((element) => {
-    const type = element?.nextElementSibling?.textContent || 'func'
-    createEntry(element, key[type])
+    const type = element?.nextElementSibling?.textContent || 'Unknown'
+    createEntry(element, typeMap[type])
   })
 }
 
@@ -82,6 +79,7 @@ function main() {
   else {
     createEntry(qs('h1'), 'Guide')
     createSections('h2')
+    createSections('h3')
   }
 }
 

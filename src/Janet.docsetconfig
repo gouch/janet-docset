@@ -17,16 +17,20 @@
 	<key>extraInfoPlist</key>
 	<string></string>
 	<key>isFromLocalFolder</key>
-	<false/>
-	<key>isFromWebsite</key>
 	<true/>
+	<key>isFromWebsite</key>
+	<false/>
 	<key>javaScriptIndexEnabled</key>
 	<true/>
 	<key>javaScriptUsedToIndex</key>
 	<string><![CDATA[%javaScriptUsedToIndex%]]></string>
 	<key>localFolderPath</key>
-	<string></string>
+	<string>%localFolderPath%</string>
 	<key>websiteURL</key>
 	<string>https://janet-lang.org/docs/index.html</string>
+	<key>DashDocSetFallbackURL</key>
+	<string>https://janet-lang.org/docs/index.html</string>
+	<key>dashIndexFilePath</key>
+	<string>docs/index.html</string>
 </dict>
 </plist>
