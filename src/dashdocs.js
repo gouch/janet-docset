@@ -85,6 +85,7 @@ function main() {
     qs('h1').setAttribute('data-package', pgkName)
     createEntry(qs('h1'), 'Guide')
     createSections('h2')
+    createSections('h3')
   }
 
   // Core guides
