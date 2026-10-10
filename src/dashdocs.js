@@ -9,7 +9,7 @@ function createEntry(element, type, name = null) {
   const hash = element.textContent.trim()
   element.setAttribute('id', hash)
   dashDoc.addEntry({
-    name: name || element.textContent,
+    name: name || hash,
     type: type,
     hash: hash,
   })
