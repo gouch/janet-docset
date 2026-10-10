@@ -2,7 +2,6 @@
 
 #toc-toggle,
 .toc,
-footer,
 h4.subtitle {
   display: none !important;
 }
@@ -12,6 +11,16 @@ h1 {
 
   &::before {
     font-size: 2rem;
+  }
+}
+
+footer {
+  color: inherit;
+  opacity: 0.62;
+  margin: 20px auto;
+
+  > div:last-child {
+    display: none;
   }
 }
 
