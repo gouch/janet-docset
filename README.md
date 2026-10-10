@@ -10,9 +10,7 @@ Hi, I’m [David Gouch][dg] and this is a documentation docset for [Janet][]. Th
 
 ## Build instructions
 
-Build dependencies are `janet`, `tar` and `wget`.
-
-A macOS shell environment is assumed. Linux might work too.
+Build dependencies are `janet`, `tar` and `wget`. The macOS platform is assumed.
 
 To fetch documentation and generate a docset, run:
 
